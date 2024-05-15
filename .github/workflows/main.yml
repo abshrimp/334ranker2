@@ -29,6 +29,7 @@ jobs:
           pip install selenium-wire
           pip install selenium
           pip install requests
+          pip install blinker==1.7.0
           
 
       - name: Run Python
