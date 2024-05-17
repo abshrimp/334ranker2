@@ -20,7 +20,7 @@ def login_twitter(account, password, tel, driver):
     global timeline_body, search_body
     for _ in range(3):
         try:
-            driver.get('https://twitter.com/i/flow/login')
+            driver.get('https://x.com/i/flow/login')
             driver.maximize_window()
             element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.NAME, "text")))
             time.sleep(1)
@@ -53,7 +53,7 @@ def login_twitter(account, password, tel, driver):
                 element_tel[0].send_keys(Keys.ENTER)
                 time.sleep(20)
             
-            driver.get('https://twitter.com/home')
+            driver.get('https://x.com/home')
             time.sleep(20)
             
             for _ in range(5):
@@ -81,7 +81,7 @@ def login_twitter(account, password, tel, driver):
                 time.sleep(0.5)
 
             
-            driver.get('https://twitter.com/search?q=334&src=typed_query&f=live')
+            driver.get('https://x.com/search?q=334&src=typed_query&f=live')
             time.sleep(20)
             
             for _ in range(5):
@@ -294,7 +294,7 @@ function get_tweets2(max_id) {
 function get_tweets3(d) {
     try {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://api.twitter.com/graphql/' + queryid + '/HomeLatestTimeline');
+        xhr.open('POST', 'https://x.com/i/api/graphql/' + queryid + '/HomeLatestTimeline');
         setheader(xhr);
         xhr.setRequestHeader('content-type', 'application/json');
         xhr.onreadystatechange = function () {
@@ -360,7 +360,7 @@ function get_tweets4(d) {
             return `${e[0].replaceAll("%22", "")}=${encodeURIComponent(JSON.stringify(e[1]))}`
         }).join("&")
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://api.twitter.com/graphql/' + queryid2 + '/SearchTimeline' + param);
+        xhr.open('GET', 'https://x.com/i/api/graphql/' + queryid2 + '/SearchTimeline' + param);
         setheader(xhr);
         xhr.setRequestHeader('content-type', 'application/json');
         xhr.onreadystatechange = function () {
