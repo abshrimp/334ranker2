@@ -24,34 +24,18 @@ def login_twitter(account, password, tel, driver):
             driver.maximize_window()
             element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.NAME, "text")))
             time.sleep(1)
-            
-            act = ActionChains(driver)
-            
-            element_account = driver.find_element(By.TAG_NAME, "input")
-            element_account.send_keys("")
-            for i in range(len(account)):
-                time.sleep(1)
-                act.send_keys(account[i])
-                act.perform()
-            time.sleep(2)
-            element_account.send_keys(Keys.ENTER)
-            time.sleep(20)
 
-            element_pass = driver.find_elements(By.TAG_NAME, "input")[1]
-            for i in range(len(password)):
-                time.sleep(1)
-                act.send_keys(password[i])
-                act.perform()
-            time.sleep(2)
-            element_pass.send_keys(Keys.ENTER)
+            cookie = {
+                    'name': 'auth_token',
+                    'value': password,
+                    'domain': '.x.com',
+                    'path': '/'
+            }
+            driver.add_cookie(cookie)
+            time.sleep(1)
+            driver.get('https://x.com')
+            
             time.sleep(20)
-
-            element_tel = driver.find_elements(By.NAME, "text")
-            if len(element_tel) > 0:
-                element_tel[0].send_keys(tel)
-                time.sleep(2) 
-                element_tel[0].send_keys(Keys.ENTER)
-                time.sleep(20)
             
             driver.get('https://x.com/home')
             time.sleep(20)
