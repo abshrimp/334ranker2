@@ -433,7 +433,7 @@ function final(out6) {
                 res = driver.execute_script("return window.data")
                 if res != "":
                     res2 = driver.execute_script("return window.data2")
-                    response = requests.post(os.environ['GAS_URL'], data=json.dumps({'data': res2}))
+                    #response = requests.post(os.environ['GAS_URL'], data=json.dumps({'data': res2}))
                     make_ranking(res, driver)
                     print(res2)
                     break
